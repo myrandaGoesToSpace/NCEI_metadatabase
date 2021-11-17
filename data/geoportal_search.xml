@@ -1,0 +1,331 @@
+<csw:GetRecordsResponse xmlns:csw="http://www.opengis.net/cat/csw/3.0" xmlns:ows="http://www.opengis.net/ows/2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/">
+<csw:SearchStatus timestamp="2021-11-17T15:40:44.375Z"/>
+<csw:SearchResults numberOfRecordsMatched="33278" numberOfRecordsReturned="10" nextRecord="11" recordSchema="http://www.opengis.net/cat/csw/3.0">
+<csw:Record>
+<dc:identifier>gov.noaa.nodc:0000662</dc:identifier>
+<dc:title>(NCEI Accession 0000662)</dc:title>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NODC > National Oceanographic Data Center, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NCEI > National Centers for Environmental Information, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">DOD/USNAVY/NAVOCEANO > Naval Oceanographic Office, U.S. Navy, U.S. Department of Defense</dc:subject>
+<dc:subject scheme="keywords">0000662</dc:subject>
+<dc:subject scheme="keywords">662</dc:subject>
+<dc:subject scheme="keywords">DEPTH - BOTTOM</dc:subject>
+<dc:subject scheme="keywords">DEPTH - OBSERVATION</dc:subject>
+<dc:subject scheme="keywords">NITRATE</dc:subject>
+<dc:subject scheme="keywords">phosphate</dc:subject>
+<dc:subject scheme="keywords">silicate</dc:subject>
+<dc:subject scheme="keywords">bottle</dc:subject>
+<dc:subject scheme="keywords">profile</dc:subject>
+<dc:subject scheme="keywords">US Navy; Naval Oceanographic Office</dc:subject>
+<dc:subject scheme="keywords">Northeast Atlantic Ocean (limit-40 W)</dc:subject>
+<dc:subject scheme="keywords">oceanography</dc:subject>
+<dc:subject scheme="keywords">EARTH SCIENCE > OCEANS > BATHYMETRY/SEAFLOOR TOPOGRAPHY > WATER DEPTH</dc:subject>
+<dc:subject scheme="keywords">EARTH SCIENCE > OCEANS > OCEAN CHEMISTRY > NITRATE</dc:subject>
+<dc:subject scheme="keywords">EARTH SCIENCE > OCEANS > OCEAN CHEMISTRY > PHOSPHATE</dc:subject>
+<dc:subject scheme="keywords">EARTH SCIENCE > OCEANS > OCEAN CHEMISTRY > SILICATE</dc:subject>
+<dc:subject scheme="keywords">OCEAN > ATLANTIC OCEAN > NORTH ATLANTIC OCEAN</dc:subject>
+<dc:subject scheme="keywords">environment</dc:subject>
+<dc:subject scheme="keywords">oceans</dc:subject>
+<dct:modified>2021-11-17T12:56:21.299Z</dct:modified>
+<dct:created>2021-03-15T17:19:14.278Z</dct:created>
+<dc:creator>NCEI</dc:creator>
+<dct:references scheme="alternate.json">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A0000662</dct:references>
+<dct:references scheme="alternate.html">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A0000662/html</dct:references>
+<dct:references scheme="alternate.xml">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A0000662/xml</dct:references>
+<dct:references scheme="icon">https://www.ncei.noaa.gov/access/metadata/landing-page/bin/gfx?id=gov.noaa.nodc:0000662</dct:references>
+</csw:Record>
+<csw:Record>
+<dc:identifier>gov.noaa.nodc:0208737</dc:identifier>
+<dc:title>(NCEI Accession 0208737)</dc:title>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NODC > National Oceanographic Data Center, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NCEI > National Centers for Environmental Information, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">0208737</dc:subject>
+<dc:subject scheme="keywords">208737</dc:subject>
+<dc:subject scheme="keywords">oceanography</dc:subject>
+<dc:subject scheme="keywords">environment</dc:subject>
+<dc:subject scheme="keywords">oceans</dc:subject>
+<dct:modified>2021-11-17T13:35:24.899Z</dct:modified>
+<dct:created>2021-03-15T17:59:05.924Z</dct:created>
+<dc:creator>NCEI</dc:creator>
+<dct:references scheme="alternate.json">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A0208737</dct:references>
+<dct:references scheme="alternate.html">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A0208737/html</dct:references>
+<dct:references scheme="alternate.xml">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A0208737/xml</dct:references>
+<dct:references scheme="icon">https://www.ncei.noaa.gov/access/metadata/landing-page/bin/gfx?id=gov.noaa.nodc:0208737</dct:references>
+</csw:Record>
+<csw:Record>
+<dc:identifier>gov.noaa.nodc:0215155</dc:identifier>
+<dc:title>(NCEI Accession 0215155)</dc:title>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NODC > National Oceanographic Data Center, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NCEI > National Centers for Environmental Information, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">0215155</dc:subject>
+<dc:subject scheme="keywords">215155</dc:subject>
+<dc:subject scheme="keywords">International Council for Exploration of the Sea</dc:subject>
+<dc:subject scheme="keywords">oceanography</dc:subject>
+<dc:subject scheme="keywords">environment</dc:subject>
+<dc:subject scheme="keywords">oceans</dc:subject>
+<dct:modified>2021-11-17T13:36:59.437Z</dct:modified>
+<dct:created>2021-03-15T18:00:50.400Z</dct:created>
+<dc:creator>NCEI</dc:creator>
+<dct:references scheme="alternate.json">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A0215155</dct:references>
+<dct:references scheme="alternate.html">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A0215155/html</dct:references>
+<dct:references scheme="alternate.xml">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A0215155/xml</dct:references>
+<dct:references scheme="icon">https://www.ncei.noaa.gov/access/metadata/landing-page/bin/gfx?id=gov.noaa.nodc:0215155</dct:references>
+</csw:Record>
+<csw:Record>
+<dc:identifier>gov.noaa.nodc:6900076</dc:identifier>
+<dc:title>(NCEI Accession 6900076)</dc:title>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NODC > National Oceanographic Data Center, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NCEI > National Centers for Environmental Information, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NCEI > National Centers for Environmental Information, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">6900076</dc:subject>
+<dc:subject scheme="keywords">US DOC; NOAA; NESDIS; National Centers for Environmental Information</dc:subject>
+<dc:subject scheme="keywords">oceanography</dc:subject>
+<dc:subject scheme="keywords">environment</dc:subject>
+<dc:subject scheme="keywords">oceans</dc:subject>
+<dct:modified>2021-11-17T13:45:33.306Z</dct:modified>
+<dct:created>2021-03-15T18:05:45.339Z</dct:created>
+<dc:creator>NCEI</dc:creator>
+<dct:references scheme="alternate.json">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A6900076</dct:references>
+<dct:references scheme="alternate.html">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A6900076/html</dct:references>
+<dct:references scheme="alternate.xml">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A6900076/xml</dct:references>
+<dct:references scheme="icon">https://www.ncei.noaa.gov/access/metadata/landing-page/bin/gfx?id=gov.noaa.nodc:6900076</dct:references>
+</csw:Record>
+<csw:Record>
+<dc:identifier>gov.noaa.nodc:7700121</dc:identifier>
+<dc:title>(NCEI Accession 7700121)</dc:title>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NODC > National Oceanographic Data Center, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NCEI > National Centers for Environmental Information, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NCEI > National Centers for Environmental Information, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">7700121</dc:subject>
+<dc:subject scheme="keywords">US DOC; NOAA; NESDIS; National Centers for Environmental Information</dc:subject>
+<dc:subject scheme="keywords">oceanography</dc:subject>
+<dc:subject scheme="keywords">environment</dc:subject>
+<dc:subject scheme="keywords">oceans</dc:subject>
+<dct:modified>2021-11-17T13:59:21.305Z</dct:modified>
+<dct:created>2021-03-15T18:20:02.264Z</dct:created>
+<dc:creator>NCEI</dc:creator>
+<dct:references scheme="alternate.json">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A7700121</dct:references>
+<dct:references scheme="alternate.html">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A7700121/html</dct:references>
+<dct:references scheme="alternate.xml">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A7700121/xml</dct:references>
+<dct:references scheme="icon">https://www.ncei.noaa.gov/access/metadata/landing-page/bin/gfx?id=gov.noaa.nodc:7700121</dct:references>
+</csw:Record>
+<csw:Record>
+<dc:identifier>gov.noaa.nodc:0002166</dc:identifier>
+<dc:title>11 Real-time XBT replacements assembled by Canada Department of Fisheries and Oceans (DFO) for the Global Temperature-Salinity Profile Program (GTSPP), dates ranging from 12/01/1998 to 12/04/1998 (NCEI Accession 0002166)</dc:title>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NODC > National Oceanographic Data Center, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NCEI > National Centers for Environmental Information, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">CA/DFO > Fisheries and Oceans, Canada</dc:subject>
+<dc:subject scheme="keywords">0002166</dc:subject>
+<dc:subject scheme="keywords">2166</dc:subject>
+<dc:subject scheme="keywords">WATER TEMPERATURE</dc:subject>
+<dc:subject scheme="keywords">bathythermograph - XBT</dc:subject>
+<dc:subject scheme="keywords">meteorological</dc:subject>
+<dc:subject scheme="keywords">physical</dc:subject>
+<dc:subject scheme="keywords">profile</dc:subject>
+<dc:subject scheme="keywords">time series</dc:subject>
+<dc:subject scheme="keywords">CARRYMAR</dc:subject>
+<dc:subject scheme="keywords">CRUSADER</dc:subject>
+<dc:subject scheme="keywords">ENCOUNTER BAY</dc:subject>
+<dc:subject scheme="keywords">SAFMARINE NOLIZWE</dc:subject>
+<dc:subject scheme="keywords">WINTERBERG</dc:subject>
+<dc:subject scheme="keywords">Fisheries and Oceans Canada; Marine Environmental Data Section</dc:subject>
+<dc:subject scheme="keywords">Global Temperature and Salinity Profile Programme (GTSPP)</dc:subject>
+<dc:subject scheme="keywords">Ship of Opportunity Programme (SOOP)</dc:subject>
+<dc:subject scheme="keywords">Arafura Sea</dc:subject>
+<dc:subject scheme="keywords">Flores Sea</dc:subject>
+<dc:subject scheme="keywords">Indian Ocean</dc:subject>
+<dc:subject scheme="keywords">North Atlantic Ocean</dc:subject>
+<dc:subject scheme="keywords">South Atlantic Ocean</dc:subject>
+<dc:subject scheme="keywords">oceanography</dc:subject>
+<dc:subject scheme="keywords">GTSPP > The Global Temperature and Salinity Profile Programme</dc:subject>
+<dc:subject scheme="keywords">EARTH SCIENCE > OCEANS > OCEAN TEMPERATURE > WATER TEMPERATURE</dc:subject>
+<dc:subject scheme="keywords">XBT > Expendable Bathythermographs</dc:subject>
+<dc:subject scheme="keywords">CARRYMAR (ICES code: SVCA)</dc:subject>
+<dc:subject scheme="keywords">ENCOUNTER BAY (ICES code: 74B8)</dc:subject>
+<dc:subject scheme="keywords">WINTERBERG (ICES code: 91WI)</dc:subject>
+<dc:subject scheme="keywords">OCEAN > ATLANTIC OCEAN > NORTH ATLANTIC OCEAN</dc:subject>
+<dc:subject scheme="keywords">OCEAN > ATLANTIC OCEAN > SOUTH ATLANTIC OCEAN</dc:subject>
+<dc:subject scheme="keywords">OCEAN > INDIAN OCEAN</dc:subject>
+<dc:subject scheme="keywords">OCEAN > PACIFIC OCEAN > WESTERN PACIFIC OCEAN > SOUTH CHINA AND EASTERN ARCHIPELAGIC SEAS</dc:subject>
+<dc:subject scheme="keywords">environment</dc:subject>
+<dc:subject scheme="keywords">oceans</dc:subject>
+<dc:subject scheme="keywords">climatologyMeteorologyAtmosphere</dc:subject>
+<dct:modified>2021-11-17T12:59:29.221Z</dct:modified>
+<dct:created>2021-03-15T17:21:53.009Z</dct:created>
+<dc:creator>NCEI</dc:creator>
+<dct:references scheme="alternate.json">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A0002166</dct:references>
+<dct:references scheme="alternate.html">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A0002166/html</dct:references>
+<dct:references scheme="alternate.xml">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A0002166/xml</dct:references>
+<dct:references scheme="icon">https://www.ncei.noaa.gov/access/metadata/landing-page/bin/gfx?id=gov.noaa.nodc:0002166</dct:references>
+<ows:BoundingBox>
+<ows:LowerCorner>-34.72 -15.8</ows:LowerCorner>
+<ows:UpperCorner>133.95 33.5667</ows:UpperCorner>
+</ows:BoundingBox>
+</csw:Record>
+<csw:Record>
+<dc:identifier>gov.noaa.nodc:7300504</dc:identifier>
+<dc:title>1971 Boston Harbor current survey: currents and other data from surface buoys from 1971-05-01 to 1972-10-01 (NCEI Accession 7300504)</dc:title>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NODC > National Oceanographic Data Center, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NCEI > National Centers for Environmental Information, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">DOC/NOAA/NOS > National Ocean Service, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">7300504</dc:subject>
+<dc:subject scheme="keywords">CURRENT DIRECTION</dc:subject>
+<dc:subject scheme="keywords">CURRENT SPEED</dc:subject>
+<dc:subject scheme="keywords">bottle</dc:subject>
+<dc:subject scheme="keywords">meteorological sensors</dc:subject>
+<dc:subject scheme="keywords">Secchi disk</dc:subject>
+<dc:subject scheme="keywords">physical</dc:subject>
+<dc:subject scheme="keywords">profile</dc:subject>
+<dc:subject scheme="keywords">NOAA Ship Ferrel</dc:subject>
+<dc:subject scheme="keywords">US DOC; NOAA; NOS - Rockville, MD</dc:subject>
+<dc:subject scheme="keywords">US DOC; NOAA; NOS - Rockville, MD</dc:subject>
+<dc:subject scheme="keywords">North Atlantic Ocean</dc:subject>
+<dc:subject scheme="keywords">oceanography</dc:subject>
+<dc:subject scheme="keywords">EARTH SCIENCE > OCEANS > OCEAN CIRCULATION > OCEAN CURRENTS</dc:subject>
+<dc:subject scheme="keywords">SECCHI DISKS > SECCHI DISKS</dc:subject>
+<dc:subject scheme="keywords">SHIPS</dc:subject>
+<dc:subject scheme="keywords">FERREL (ICES code: 318L)</dc:subject>
+<dc:subject scheme="keywords">OCEAN > ATLANTIC OCEAN > NORTH ATLANTIC OCEAN</dc:subject>
+<dc:subject scheme="keywords">environment</dc:subject>
+<dc:subject scheme="keywords">oceans</dc:subject>
+<dct:modified>2021-11-17T13:52:55.385Z</dct:modified>
+<dct:abstract>This dataset comprises 1971 Boston Harbon current survey OPR-500-FE-72, including current speed and direction collected by current meters hung from surface buoys.</dct:abstract>
+<dct:created>2021-03-15T18:13:41.298Z</dct:created>
+<dc:creator>NCEI</dc:creator>
+<dct:references scheme="alternate.json">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A7300504</dct:references>
+<dct:references scheme="alternate.html">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A7300504/html</dct:references>
+<dct:references scheme="alternate.xml">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A7300504/xml</dct:references>
+<dct:references scheme="icon">https://www.ncei.noaa.gov/access/metadata/landing-page/bin/gfx?id=gov.noaa.nodc:7300504</dct:references>
+<ows:BoundingBox>
+<ows:LowerCorner>-71 42.2</ows:LowerCorner>
+<ows:UpperCorner>-70.5 42.5</ows:UpperCorner>
+</ows:BoundingBox>
+</csw:Record>
+<csw:Record>
+<dc:identifier>gov.noaa.nodc:0000052</dc:identifier>
+<dc:title>1988 Resurrection Bay Zooplankton Data Set from 1988-03-01 to 1988-06-28 (NCEI Accession 0000052)</dc:title>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NODC > National Oceanographic Data Center, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NCEI > National Centers for Environmental Information, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">UAK-F/SFOS/IMS > Institute of Marine Science, School of Fisheries and Ocean Sciences, University of Alaska Fairbanks</dc:subject>
+<dc:subject scheme="keywords">0000052</dc:subject>
+<dc:subject scheme="keywords">52</dc:subject>
+<dc:subject scheme="keywords">BEACH TAR - SEASHORE SURFACE</dc:subject>
+<dc:subject scheme="keywords">SPECIES IDENTIFICATION - WET WEIGHT</dc:subject>
+<dc:subject scheme="keywords">ZOOPLANKTON SPECIES NUMBER PER SAMPLE</dc:subject>
+<dc:subject scheme="keywords">net - plankton net</dc:subject>
+<dc:subject scheme="keywords">physical</dc:subject>
+<dc:subject scheme="keywords">RV Alpha Helix</dc:subject>
+<dc:subject scheme="keywords">University of Alaska - Fairbanks; Institute of Marine Science</dc:subject>
+<dc:subject scheme="keywords">University of Alaska - Fairbanks; Institute of Marine Science</dc:subject>
+<dc:subject scheme="keywords">Gulf of Alaska - 1 (GAK1)</dc:subject>
+<dc:subject scheme="keywords">Gulf of Alaska</dc:subject>
+<dc:subject scheme="keywords">oceanography</dc:subject>
+<dc:subject scheme="keywords">EARTH SCIENCE > BIOSPHERE > ECOSYSTEMS > AQUATIC ECOSYSTEMS > PLANKTON > ZOOPLANKTON</dc:subject>
+<dc:subject scheme="keywords">PLANKTON NETS</dc:subject>
+<dc:subject scheme="keywords">SHIPS</dc:subject>
+<dc:subject scheme="keywords">ALPHA HELIX (ICES code: 31HX)</dc:subject>
+<dc:subject scheme="keywords">OCEAN > PACIFIC OCEAN > NORTH PACIFIC OCEAN > GULF OF ALASKA</dc:subject>
+<dc:subject scheme="keywords">environment</dc:subject>
+<dc:subject scheme="keywords">oceans</dc:subject>
+<dc:subject scheme="keywords">biota</dc:subject>
+<dct:modified>2021-11-17T12:54:32.622Z</dct:modified>
+<dct:abstract>Zooplankton and beach tar data were collected using plankton net casts in the Gulf of Alaska from the ALPHA HELIX. Data were collected from 01 March 1988 to 28 June 1988 by University of Alaska in Fairbanks; Institute of Marine Science with support from the Gulf of Alaska - 1 (GAK-1) project.</dct:abstract>
+<dct:created>2021-03-15T17:17:33.277Z</dct:created>
+<dc:creator>NCEI</dc:creator>
+<dct:references scheme="alternate.json">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A0000052</dct:references>
+<dct:references scheme="alternate.html">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A0000052/html</dct:references>
+<dct:references scheme="alternate.xml">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A0000052/xml</dct:references>
+<dct:references scheme="icon">https://www.ncei.noaa.gov/access/metadata/landing-page/bin/gfx?id=gov.noaa.nodc:0000052</dct:references>
+<ows:BoundingBox>
+<ows:LowerCorner>-149.4083 59.9117</ows:LowerCorner>
+<ows:UpperCorner>-149.3583 60.02</ows:UpperCorner>
+</ows:BoundingBox>
+</csw:Record>
+<csw:Record>
+<dc:identifier>gov.noaa.ngdc.mgg.hazards:G01269</dc:identifier>
+<dc:title>1988 Spitak Earthquake Database</dc:title>
+<dc:subject scheme="keywords">Earth Science > Solid Earth > Seismology > Earthquake Occurrences</dc:subject>
+<dc:subject scheme="keywords">INFOTERRA > Disasters > Catastrophic phenomena > Earthquakes</dc:subject>
+<dc:subject scheme="keywords">INFOTERRA > Lithosphere > Seismic activity > Seismic activity</dc:subject>
+<dc:subject scheme="keywords">INFOTERRA > Lithosphere > Seismic monitoring > Seismic monitoring</dc:subject>
+<dc:subject scheme="keywords">Epicenter</dc:subject>
+<dc:subject scheme="keywords">Hypocenter</dc:subject>
+<dc:subject scheme="keywords">Seismographs</dc:subject>
+<dc:subject scheme="keywords">Seismometers</dc:subject>
+<dc:subject scheme="keywords">Visual Observations</dc:subject>
+<dc:subject scheme="keywords">ICSU-WDS > International Council for Science - World Data System</dc:subject>
+<dc:subject scheme="keywords">Asia > Armenia > Spitak</dc:subject>
+<dc:subject scheme="keywords">Continent > Asia > Western Asia > Armenia</dc:subject>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NCEI > National Centers for Environmental Information, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NGDC > National Geophysical Data Center, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">geoscientificInformation</dc:subject>
+<dct:modified>2021-11-17T13:09:10.216Z</dct:modified>
+<dct:abstract>The 1988 Spitak Earthquake database is an extensive collection of geophysical and geological data, maps, charts, images and descriptive text pertaining to the catastrophic earthquake in Armenia. This earthquake was unique both in catastrophic effects and in study coverage. Research groups from the former U.S.S.R., U.S.A., France, and Japan studied the earthquake area. The database was developed as a cooperative effort between centers in Russia and the United States. The goal was to provide seismologists around the world with a complete set of data for the devastating earthquake. The database contains practically all material relevant to the 1988 Spitak earthquake and its aftereffects. It also includes the geological and geophysical information collected during the years prior to the event, important for understanding the event. Almost 2,000 files and 170 megabytes of data are contained in the collection. The database is static and is no longer being updated.</dct:abstract>
+<dct:created>2021-08-04T13:13:21.611Z</dct:created>
+<dc:creator>NCEI</dc:creator>
+<dct:references scheme="alternate.json">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.ngdc.mgg.hazards%3AG01269</dct:references>
+<dct:references scheme="alternate.html">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.ngdc.mgg.hazards%3AG01269/html</dct:references>
+<dct:references scheme="alternate.xml">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.ngdc.mgg.hazards%3AG01269/xml</dct:references>
+<dct:references scheme="icon">https://www.ngdc.noaa.gov/hazard/icons/spitaksm.gif</dct:references>
+<ows:BoundingBox>
+<ows:LowerCorner>42 40</ows:LowerCorner>
+<ows:UpperCorner>48 43</ows:UpperCorner>
+</ows:BoundingBox>
+</csw:Record>
+<csw:Record>
+<dc:identifier>gov.noaa.nodc:0000029</dc:identifier>
+<dc:title>1990, 1991, 1992 and 1995 CRETM/LMER Zooplankton Data Sets (NCEI Accession 0000029)</dc:title>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NODC > National Oceanographic Data Center, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NCEI > National Centers for Environmental Information, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">DOC/NOAA/NESDIS/NODC > National Oceanographic Data Center, NESDIS, NOAA, U.S. Department of Commerce</dc:subject>
+<dc:subject scheme="keywords">0000029</dc:subject>
+<dc:subject scheme="keywords">29</dc:subject>
+<dc:subject scheme="keywords">LIGHT ATTENUATION</dc:subject>
+<dc:subject scheme="keywords">OPTICAL BACKSCATTER</dc:subject>
+<dc:subject scheme="keywords">SALINITY</dc:subject>
+<dc:subject scheme="keywords">TRANSMISSIVITY</dc:subject>
+<dc:subject scheme="keywords">WATER TEMPERATURE</dc:subject>
+<dc:subject scheme="keywords">ZOOPLANKTON DENSITIES</dc:subject>
+<dc:subject scheme="keywords">ZOOPLANKTON IDENTITIES</dc:subject>
+<dc:subject scheme="keywords">CTD</dc:subject>
+<dc:subject scheme="keywords">pump casts</dc:subject>
+<dc:subject scheme="keywords">biological</dc:subject>
+<dc:subject scheme="keywords">optical</dc:subject>
+<dc:subject scheme="keywords">pump cast</dc:subject>
+<dc:subject scheme="keywords">Don Raul</dc:subject>
+<dc:subject scheme="keywords">R/V WECOMA</dc:subject>
+<dc:subject scheme="keywords">University of Washington</dc:subject>
+<dc:subject scheme="keywords">US DOC; NOAA; NESDIS; National Oceanographic Data Center</dc:subject>
+<dc:subject scheme="keywords">COLUMBIA RIVER ESTUARINE TURBIDITY MAXIMUM RESEARCH PROGRAM (CRETM)</dc:subject>
+<dc:subject scheme="keywords">LAND-MARGIN ECOSYSTEM RESEARCH (LMER)</dc:subject>
+<dc:subject scheme="keywords">Coastal Waters of Washington/Oregon</dc:subject>
+<dc:subject scheme="keywords">Columbia River estuary - Washington/Oregon</dc:subject>
+<dc:subject scheme="keywords">North Atlantic Ocean</dc:subject>
+<dc:subject scheme="keywords">North Pacific Ocean</dc:subject>
+<dc:subject scheme="keywords">oceanography</dc:subject>
+<dc:subject scheme="keywords">LMER > Land Margin Ecosystem Research Project</dc:subject>
+<dc:subject scheme="keywords">EARTH SCIENCE > BIOSPHERE > ECOSYSTEMS > AQUATIC ECOSYSTEMS > PLANKTON > ZOOPLANKTON</dc:subject>
+<dc:subject scheme="keywords">EARTH SCIENCE > OCEANS > OCEAN OPTICS</dc:subject>
+<dc:subject scheme="keywords">EARTH SCIENCE > OCEANS > OCEAN OPTICS > ATTENUATION/TRANSMISSION</dc:subject>
+<dc:subject scheme="keywords">EARTH SCIENCE > OCEANS > OCEAN TEMPERATURE > WATER TEMPERATURE</dc:subject>
+<dc:subject scheme="keywords">EARTH SCIENCE > OCEANS > SALINITY/DENSITY > SALINITY</dc:subject>
+<dc:subject scheme="keywords">CTD > Conductivity, Temperature, Depth</dc:subject>
+<dc:subject scheme="keywords">WECOMA (ICES code: 32WC)</dc:subject>
+<dc:subject scheme="keywords">OCEAN > ATLANTIC OCEAN > NORTH ATLANTIC OCEAN</dc:subject>
+<dc:subject scheme="keywords">OCEAN > PACIFIC OCEAN > NORTH PACIFIC OCEAN</dc:subject>
+<dc:subject scheme="keywords">environment</dc:subject>
+<dc:subject scheme="keywords">oceans</dc:subject>
+<dct:modified>2021-11-17T12:54:27.626Z</dct:modified>
+<dct:created>2021-03-15T17:17:26.803Z</dct:created>
+<dc:creator>NCEI</dc:creator>
+<dct:references scheme="alternate.json">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A0000029</dct:references>
+<dct:references scheme="alternate.html">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A0000029/html</dct:references>
+<dct:references scheme="alternate.xml">http://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.nodc%3A0000029/xml</dct:references>
+<dct:references scheme="icon">https://www.ncei.noaa.gov/access/metadata/landing-page/bin/gfx?id=gov.noaa.nodc:0000029</dct:references>
+<ows:BoundingBox>
+<ows:LowerCorner>-124.041667 0.766667</ows:LowerCorner>
+<ows:UpperCorner>-16.25 46.263167</ows:UpperCorner>
+</ows:BoundingBox>
+</csw:Record>
+</csw:SearchResults>
+</csw:GetRecordsResponse>
