@@ -43,30 +43,17 @@ def main():
     #print(soup)
 
     # Parse through the xml file
-    records = []
-    subjects = []
-    attrs = []
-    
-    # TO DO: EXPAND TO SEARCH FOR MANY ATTRIBUTES AND ADD THEM TO DICTIONARY    
-    #print('records')
-    #print(soup.find_all(record_name))
-
-    for record in soup.find_all(record_name):
-        attrs.append(get_attr(record, schemas[0]))
-
-        # Test
-        print('soup found: ')
-        print(get_attr(soup, schemas[0]))
-        
-    # Create dictionary
     metadata_dict = {}
 
-    for schema in schemas:
-        metadata_dict[schema] = attrs
+    for i in range(len(schemas)):
+        attrs = []
+        for record in soup.find_all(record_name):
+            attrs.append(get_attr(record, schemas[i]))
         
-        # Testing
-        print('dictionary:')
-        print(metadata_dict[schema])
+        metadata_dict[schemas[i]] = attrs
+        # Test
+        print('soup found: ')
+        print(get_attr(soup, schemas[i]))
 
     # Write RDF file
     metadata_df = pd.DataFrame(metadata_dict)
@@ -102,7 +89,7 @@ def main():
 
     for schema in schemas:
         for key in xml_schema_terms.keys():
-            if schema.startswith(key):
+            if schema.startswith(key) and xml_schema_terms[key] not in schemas_to_include:
                 schemas_to_include.append(xml_schema_terms[key])
     # Test
     print("schemas to include:")
@@ -114,6 +101,19 @@ def main():
     
     fo.write(xml_schema_terms['header'])
     fo.write(rdf_string)
+
+    for row in metadata_df.index:
+        #node_string = str(row)
+        #fo.write("<rdf:Description rdf:nodeID='" + node_string + "' >")
+        fo.write("<rdf:Description>")
+        for col in metadata_df.columns:
+            for attr in metadata_df[col][row]:
+                col_string = "<" + col + ">" + str(attr) + "</" + col + ">"
+                fo.write(col_string)
+
+        fo.write("</rdf:Description> \n")
+
+    fo.write("</rdf:RDF>")
 
     fo.close()
 
