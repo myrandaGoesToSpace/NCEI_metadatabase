@@ -83,7 +83,38 @@ def main():
     print(PATH)
 
     metadata_df.to_csv(PATH)
-
+ 
     # Save RDF file
+
+    # Necessary variables
+    PATH = filename
+    PATH = PATH.replace('.xml','_rdf.xml')
+
+    # Dictionary to hold xml schemas
+    xml_schema_terms = {}
+
+    xml_schema_terms['header'] = "<?xml version = '1.0' encoding='UTF-8' ?>"
+    xml_schema_terms['rdf'] = "xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' "
+    xml_schema_terms['dc'] = "xmlns:dc='http://purl.org/dc/elements/1.1/' "
+    xml_schema_terms['dct'] = "xmlns:dct='http://purl.org/dc/terms/' "
+    
+    schemas_to_include = [xml_schema_terms['rdf']]
+
+    for schema in schemas:
+        for key in xml_schema_terms.keys():
+            if schema.startswith(key):
+                schemas_to_include.append(xml_schema_terms[key])
+    # Test
+    print("schemas to include:")
+    print(schemas_to_include)
+
+    schemas_string = ' '.join(schemas_to_include)
+    rdf_string = "<rdf:RDF " + schemas_string + " >" 
+    fo = open(PATH, 'w')
+    
+    fo.write(xml_schema_terms['header'])
+    fo.write(rdf_string)
+
+    fo.close()
 
 main()
