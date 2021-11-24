@@ -22,14 +22,15 @@ def main():
         filename = sys.argv[1]
         schemas = []
         record_name = sys.argv[2]
-
-        for i in range(3, len(sys.argv)):
+        identifier = sys.argv[3]
+        for i in range(4, len(sys.argv)):
             schemas.append(sys.argv[i])
 
     else:
         filename = 'data/geoportal_search.xml'
         schemas = ['dc:subject']
         record_name = 'csw:record'
+        identifier = 'dc:identifier'
 
     content = []
 
@@ -44,16 +45,32 @@ def main():
 
     # Parse through the xml file
     metadata_dict = {}
+    id_list = []
 
     for i in range(len(schemas)):
         attrs = []
         for record in soup.find_all(record_name):
             attrs.append(get_attr(record, schemas[i]))
-        
+            
+            if i == 0:
+                id_list.append(get_attr(record, identifier))
+                metadata_dict['identifier'] = id_list
+
         metadata_dict[schemas[i]] = attrs
         # Test
         print('soup found: ')
         print(get_attr(soup, schemas[i]))
+
+    # Get identifier
+    '''
+    id_list = []
+    for record in soup.find_all(record_name):
+        id_result = ''.join(get_attr(record, identifier))
+        print(type(id_result))
+        id_list.append(id_result)
+
+    metadata_dict['identifier'] = id_list
+    '''
 
     # Write RDF file
     metadata_df = pd.DataFrame(metadata_dict)
@@ -84,8 +101,9 @@ def main():
     xml_schema_terms['rdf'] = "xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' "
     xml_schema_terms['dc'] = "xmlns:dc='http://purl.org/dc/elements/1.1/' "
     xml_schema_terms['dct'] = "xmlns:dct='http://purl.org/dc/terms/' "
-    
-    schemas_to_include = [xml_schema_terms['rdf']]
+    xml_schema_terms['rdfs'] = "xmlns:rdfs='http://www.w3.org/TR/2014/REC-rdf-schema-20140225/'"
+
+    schemas_to_include = [xml_schema_terms['rdf'], xml_schema_terms['rdfs']]
 
     for schema in schemas:
         for key in xml_schema_terms.keys():
@@ -103,13 +121,15 @@ def main():
     fo.write(rdf_string)
 
     for row in metadata_df.index:
-        #node_string = str(row)
-        #fo.write("<rdf:Description rdf:nodeID='" + node_string + "' >")
-        fo.write("<rdf:Description>")
+        id_string = ''.join(metadata_df['identifier'][row])
+        label_string = id_string
+        fo.write("<rdf:Description rdf:about='" + id_string + "' rdfs:label='" + label_string + "' >")
+        
         for col in metadata_df.columns:
-            for attr in metadata_df[col][row]:
-                col_string = "<" + col + ">" + str(attr) + "</" + col + ">"
-                fo.write(col_string)
+            if col !='identifier':
+                for attr in metadata_df[col][row]:
+                    col_string = "<" + col + ">" + str(attr) + "</" + col + ">"
+                    fo.write(col_string)
 
         fo.write("</rdf:Description> \n")
 
