@@ -1,0 +1,213 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 500px;
+            height: 500px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+        #loadingBar {
+            position:absolute;
+            top:0px;
+            left:0px;
+            width: 500px;
+            height: 500px;
+            background-color:rgba(200,200,200,0.8);
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -ms-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+            opacity:1;
+        }
+
+        #bar {
+            position:absolute;
+            top:0px;
+            left:0px;
+            width:20px;
+            height:20px;
+            margin:auto auto auto auto;
+            border-radius:11px;
+            border:2px solid rgba(30,30,30,0.05);
+            background: rgb(0, 173, 246); /* Old browsers */
+            box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+        }
+
+        #border {
+            position:absolute;
+            top:10px;
+            left:10px;
+            width:500px;
+            height:23px;
+            margin:auto auto auto auto;
+            box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+            border-radius:10px;
+        }
+
+        #text {
+            position:absolute;
+            top:8px;
+            left:530px;
+            width:30px;
+            height:50px;
+            margin:auto auto auto auto;
+            font-size:22px;
+            color: #000000;
+        }
+
+        div.outerBorder {
+            position:relative;
+            top:400px;
+            width:600px;
+            height:44px;
+            margin:auto auto auto auto;
+            border:8px solid rgba(0,0,0,0.1);
+            background: rgb(252,252,252); /* Old browsers */
+            background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+            border-radius:72px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        }
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+<div id="loadingBar">
+    <div class="outerBorder">
+        <div id="text">0%</div>
+        <div id="border">
+            <div id="bar"></div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": 0, "label": "\u003cfile:///home/myranda/Documents/NOAA/NCEI_metadatabase/data/gov.noaa.nodc:0000052\u003e", "shape": "dot", "title": "\u003cfile:///home/myranda/Documents/NOAA/NCEI_metadatabase/data/gov.noaa.nodc:0000052\u003e"}, {"id": 1, "label": "52", "shape": "dot", "title": "52"}, {"id": 2, "label": "\u003cfile:///home/myranda/Documents/NOAA/NCEI_metadatabase/data/gov.noaa.nodc:0000029\u003e", "shape": "dot", "title": "\u003cfile:///home/myranda/Documents/NOAA/NCEI_metadatabase/data/gov.noaa.nodc:0000029\u003e"}, {"id": 3, "label": "EARTH SCIENCE \u003e OCEANS \u003e OCEAN OPTICS", "shape": "dot", "title": "EARTH SCIENCE \u003e OCEANS \u003e OCEAN OPTICS"}, {"id": 4, "label": "\u003cfile:///home/myranda/Documents/NOAA/NCEI_metadatabase/data/gov.noaa.nodc:0000662\u003e", "shape": "dot", "title": "\u003cfile:///home/myranda/Documents/NOAA/NCEI_metadatabase/data/gov.noaa.nodc:0000662\u003e"}, {"id": 5, "label": "EARTH SCIENCE \u003e OCEANS \u003e BATHYMETRY/SEAFLOOR TOPOGRAPHY \u003e WATER DEPTH", "shape": "dot", "title": "EARTH SCIENCE \u003e OCEANS \u003e BATHYMETRY/SEAFLOOR TOPOGRAPHY \u003e WATER DEPTH"}, {"id": 6, "label": "\u003cfile:///home/myranda/Documents/NOAA/NCEI_metadatabase/data/gov.noaa.nodc:7300504\u003e", "shape": "dot", "title": "\u003cfile:///home/myranda/Documents/NOAA/NCEI_metadatabase/data/gov.noaa.nodc:7300504\u003e"}, {"id": 7, "label": "SHIPS", "shape": "dot", "title": "SHIPS"}, {"id": 8, "label": "\u003cgov.noaa.ngdc.mgg.hazards:G01269\u003e", "shape": "dot", "title": "\u003cgov.noaa.ngdc.mgg.hazards:G01269\u003e"}, {"id": 9, "label": "1988 Spitak Earthquake Database", "shape": "dot", "title": "1988 Spitak Earthquake Database"}, {"id": 10, "label": "CTD \u003e Conductivity, Temperature, Depth", "shape": "dot", "title": "CTD \u003e Conductivity, Temperature, Depth"}, {"id": 11, "label": "\u003cfile:///home/myranda/Documents/NOAA/NCEI_metadatabase/data/gov.noaa.nodc:0002166\u003e", "shape": "dot", "title": "\u003cfile:///home/myranda/Documents/NOAA/NCEI_metadatabase/data/gov.noaa.nodc:0002166\u003e"}, {"id": 12, "label": "0002166", "shape": "dot", "title": "0002166"}, {"id": 13, "label": "SPECIES IDENTIFICATION - WET WEIGHT", "shape": "dot", "title": "SPECIES IDENTIFICATION - WET WEIGHT"}, {"id": 14, "label": "PLANKTON NETS", "shape": "dot", "title": "PLANKTON NETS"}, {"id": 15, "label": "COLUMBIA RIVER ESTUARINE TURBIDITY MAXIMUM RESEARCH PROGRAM (CRETM)", "shape": "dot", "title": "COLUMBIA RIVER ESTUARINE TURBIDITY MAXIMUM RESEARCH PROGRAM (CRETM)"}, {"id": 16, "label": "North Atlantic Ocean", "shape": "dot", "title": "North Atlantic Ocean"}, {"id": 17, "label": "WINTERBERG", "shape": "dot", "title": "WINTERBERG"}, {"id": 18, "label": "\u003cfile:///home/myranda/Documents/NOAA/NCEI_metadatabase/data/gov.noaa.nodc:7700121\u003e", "shape": "dot", "title": "\u003cfile:///home/myranda/Documents/NOAA/NCEI_metadatabase/data/gov.noaa.nodc:7700121\u003e"}, {"id": 19, "label": "DOC/NOAA/NESDIS/NODC \u003e National Oceanographic Data Center, NESDIS, NOAA, U.S. Department of Commerce", "shape": "dot", "title": "DOC/NOAA/NESDIS/NODC \u003e National Oceanographic Data Center, NESDIS, NOAA, U.S. Department of Commerce"}, {"id": 20, "label": "oceanography", "shape": "dot", "title": "oceanography"}, {"id": 21, "label": "\u003cfile:///home/myranda/Documents/NOAA/NCEI_metadatabase/data/gov.noaa.nodc:6900076\u003e", "shape": "dot", "title": "\u003cfile:///home/myranda/Documents/NOAA/NCEI_metadatabase/data/gov.noaa.nodc:6900076\u003e"}, {"id": 22, "label": "(NCEI Accession 6900076)", "shape": "dot", "title": "(NCEI Accession 6900076)"}, {"id": 23, "label": "SECCHI DISKS \u003e SECCHI DISKS", "shape": "dot", "title": "SECCHI DISKS \u003e SECCHI DISKS"}, {"id": 24, "label": "EARTH SCIENCE \u003e OCEANS \u003e OCEAN CHEMISTRY \u003e PHOSPHATE", "shape": "dot", "title": "EARTH SCIENCE \u003e OCEANS \u003e OCEAN CHEMISTRY \u003e PHOSPHATE"}, {"id": 25, "label": "environment", "shape": "dot", "title": "environment"}, {"id": 26, "label": "gov.noaa.ngdc.mgg.hazards:G01269", "shape": "dot", "title": "gov.noaa.ngdc.mgg.hazards:G01269"}, {"id": 27, "label": "Columbia River estuary - Washington/Oregon", "shape": "dot", "title": "Columbia River estuary - Washington/Oregon"}, {"id": 28, "label": "US DOC; NOAA; NESDIS; National Centers for Environmental Information", "shape": "dot", "title": "US DOC; NOAA; NESDIS; National Centers for Environmental Information"}, {"id": 29, "label": "SALINITY", "shape": "dot", "title": "SALINITY"}, {"id": 30, "label": "2166", "shape": "dot", "title": "2166"}, {"id": 31, "label": "US DOC; NOAA; NESDIS; National Oceanographic Data Center", "shape": "dot", "title": "US DOC; NOAA; NESDIS; National Oceanographic Data Center"}, {"id": 32, "label": "pump cast", "shape": "dot", "title": "pump cast"}, {"id": 33, "label": "1971 Boston Harbor current survey: currents and other data from surface buoys from 1971-05-01 to 1972-10-01 (NCEI Accession 7300504)", "shape": "dot", "title": "1971 Boston Harbor current survey: currents and other data from surface buoys from 1971-05-01 to 1972-10-01 (NCEI Accession 7300504)"}, {"id": 34, "label": "gov.noaa.nodc:0000662", "shape": "dot", "title": "gov.noaa.nodc:0000662"}, {"id": 35, "label": "gov.noaa.nodc:0002166", "shape": "dot", "title": "gov.noaa.nodc:0002166"}, {"id": 36, "label": "gov.noaa.nodc:7700121", "shape": "dot", "title": "gov.noaa.nodc:7700121"}, {"id": 37, "label": "OCEAN \u003e ATLANTIC OCEAN \u003e NORTH ATLANTIC OCEAN", "shape": "dot", "title": "OCEAN \u003e ATLANTIC OCEAN \u003e NORTH ATLANTIC OCEAN"}, {"id": 38, "label": "INFOTERRA \u003e Lithosphere \u003e Seismic activity \u003e Seismic activity", "shape": "dot", "title": "INFOTERRA \u003e Lithosphere \u003e Seismic activity \u003e Seismic activity"}, {"id": 39, "label": "physical", "shape": "dot", "title": "physical"}, {"id": 40, "label": "gov.noaa.nodc:6900076", "shape": "dot", "title": "gov.noaa.nodc:6900076"}, {"id": 41, "label": "Seismometers", "shape": "dot", "title": "Seismometers"}, {"id": 42, "label": "0000029", "shape": "dot", "title": "0000029"}, {"id": 43, "label": "\u003cfile:///home/myranda/Documents/NOAA/NCEI_metadatabase/data/gov.noaa.nodc:0215155\u003e", "shape": "dot", "title": "\u003cfile:///home/myranda/Documents/NOAA/NCEI_metadatabase/data/gov.noaa.nodc:0215155\u003e"}, {"id": 44, "label": "DOC/NOAA/NESDIS/NCEI \u003e National Centers for Environmental Information, NESDIS, NOAA, U.S. Department of Commerce", "shape": "dot", "title": "DOC/NOAA/NESDIS/NCEI \u003e National Centers for Environmental Information, NESDIS, NOAA, U.S. Department of Commerce"}, {"id": 45, "label": "South Atlantic Ocean", "shape": "dot", "title": "South Atlantic Ocean"}, {"id": 46, "label": "Gulf of Alaska - 1 (GAK1)", "shape": "dot", "title": "Gulf of Alaska - 1 (GAK1)"}, {"id": 47, "label": "Coastal Waters of Washington/Oregon", "shape": "dot", "title": "Coastal Waters of Washington/Oregon"}, {"id": 48, "label": "(NCEI Accession 0215155)", "shape": "dot", "title": "(NCEI Accession 0215155)"}, {"id": 49, "label": "oceans", "shape": "dot", "title": "oceans"}, {"id": 50, "label": "CTD", "shape": "dot", "title": "CTD"}, {"id": 51, "label": "Earth Science \u003e Solid Earth \u003e Seismology \u003e Earthquake Occurrences", "shape": "dot", "title": "Earth Science \u003e Solid Earth \u003e Seismology \u003e Earthquake Occurrences"}, {"id": 52, "label": "Indian Ocean", "shape": "dot", "title": "Indian Ocean"}, {"id": 53, "label": "OCEAN \u003e INDIAN OCEAN", "shape": "dot", "title": "OCEAN \u003e INDIAN OCEAN"}, {"id": 54, "label": "\u003cfile:///home/myranda/Documents/NOAA/NCEI_metadatabase/data/gov.noaa.nodc:0208737\u003e", "shape": "dot", "title": "\u003cfile:///home/myranda/Documents/NOAA/NCEI_metadatabase/data/gov.noaa.nodc:0208737\u003e"}, {"id": 55, "label": "0208737", "shape": "dot", "title": "0208737"}, {"id": 56, "label": "US DOC; NOAA; NOS - Rockville, MD", "shape": "dot", "title": "US DOC; NOAA; NOS - Rockville, MD"}, {"id": 57, "label": "7700121", "shape": "dot", "title": "7700121"}, {"id": 58, "label": "geoscientificInformation", "shape": "dot", "title": "geoscientificInformation"}, {"id": 59, "label": "EARTH SCIENCE \u003e BIOSPHERE \u003e ECOSYSTEMS \u003e AQUATIC ECOSYSTEMS \u003e PLANKTON \u003e ZOOPLANKTON", "shape": "dot", "title": "EARTH SCIENCE \u003e BIOSPHERE \u003e ECOSYSTEMS \u003e AQUATIC ECOSYSTEMS \u003e PLANKTON \u003e ZOOPLANKTON"}, {"id": 60, "label": "phosphate", "shape": "dot", "title": "phosphate"}, {"id": 61, "label": "University of Alaska - Fairbanks; Institute of Marine Science", "shape": "dot", "title": "University of Alaska - Fairbanks; Institute of Marine Science"}, {"id": 62, "label": "bottle", "shape": "dot", "title": "bottle"}, {"id": 63, "label": "gov.noaa.nodc:0215155", "shape": "dot", "title": "gov.noaa.nodc:0215155"}, {"id": 64, "label": "LIGHT ATTENUATION", "shape": "dot", "title": "LIGHT ATTENUATION"}, {"id": 65, "label": "7300504", "shape": "dot", "title": "7300504"}, {"id": 66, "label": "ICSU-WDS \u003e International Council for Science - World Data System", "shape": "dot", "title": "ICSU-WDS \u003e International Council for Science - World Data System"}, {"id": 67, "label": "CARRYMAR", "shape": "dot", "title": "CARRYMAR"}, {"id": 68, "label": "DEPTH - BOTTOM", "shape": "dot", "title": "DEPTH - BOTTOM"}, {"id": 69, "label": "UAK-F/SFOS/IMS \u003e Institute of Marine Science, School of Fisheries and Ocean Sciences, University of Alaska Fairbanks", "shape": "dot", "title": "UAK-F/SFOS/IMS \u003e Institute of Marine Science, School of Fisheries and Ocean Sciences, University of Alaska Fairbanks"}, {"id": 70, "label": "net - plankton net", "shape": "dot", "title": "net - plankton net"}, {"id": 71, "label": "XBT \u003e Expendable Bathythermographs", "shape": "dot", "title": "XBT \u003e Expendable Bathythermographs"}, {"id": 72, "label": "0000052", "shape": "dot", "title": "0000052"}, {"id": 73, "label": "Epicenter", "shape": "dot", "title": "Epicenter"}, {"id": 74, "label": "Don Raul", "shape": "dot", "title": "Don Raul"}, {"id": 75, "label": "R/V WECOMA", "shape": "dot", "title": "R/V WECOMA"}, {"id": 76, "label": "Secchi disk", "shape": "dot", "title": "Secchi disk"}, {"id": 77, "label": "Asia \u003e Armenia \u003e Spitak", "shape": "dot", "title": "Asia \u003e Armenia \u003e Spitak"}, {"id": 78, "label": "biological", "shape": "dot", "title": "biological"}, {"id": 79, "label": "time series", "shape": "dot", "title": "time series"}, {"id": 80, "label": "ZOOPLANKTON IDENTITIES", "shape": "dot", "title": "ZOOPLANKTON IDENTITIES"}, {"id": 81, "label": "WINTERBERG (ICES code: 91WI)", "shape": "dot", "title": "WINTERBERG (ICES code: 91WI)"}, {"id": 82, "label": "meteorological sensors", "shape": "dot", "title": "meteorological sensors"}, {"id": 83, "label": "profile", "shape": "dot", "title": "profile"}, {"id": 84, "label": "NOAA Ship Ferrel", "shape": "dot", "title": "NOAA Ship Ferrel"}, {"id": 85, "label": "ENCOUNTER BAY (ICES code: 74B8)", "shape": "dot", "title": "ENCOUNTER BAY (ICES code: 74B8)"}, {"id": 86, "label": "University of Washington", "shape": "dot", "title": "University of Washington"}, {"id": 87, "label": "INFOTERRA \u003e Lithosphere \u003e Seismic monitoring \u003e Seismic monitoring", "shape": "dot", "title": "INFOTERRA \u003e Lithosphere \u003e Seismic monitoring \u003e Seismic monitoring"}, {"id": 88, "label": "Northeast Atlantic Ocean (limit-40 W)", "shape": "dot", "title": "Northeast Atlantic Ocean (limit-40 W)"}, {"id": 89, "label": "Visual Observations", "shape": "dot", "title": "Visual Observations"}, {"id": 90, "label": "OCEAN \u003e PACIFIC OCEAN \u003e WESTERN PACIFIC OCEAN \u003e SOUTH CHINA AND EASTERN ARCHIPELAGIC SEAS", "shape": "dot", "title": "OCEAN \u003e PACIFIC OCEAN \u003e WESTERN PACIFIC OCEAN \u003e SOUTH CHINA AND EASTERN ARCHIPELAGIC SEAS"}, {"id": 91, "label": "215155", "shape": "dot", "title": "215155"}, {"id": 92, "label": "ALPHA HELIX (ICES code: 31HX)", "shape": "dot", "title": "ALPHA HELIX (ICES code: 31HX)"}, {"id": 93, "label": "GTSPP \u003e The Global Temperature and Salinity Profile Programme", "shape": "dot", "title": "GTSPP \u003e The Global Temperature and Salinity Profile Programme"}, {"id": 94, "label": "Hypocenter", "shape": "dot", "title": "Hypocenter"}, {"id": 95, "label": "EARTH SCIENCE \u003e OCEANS \u003e SALINITY/DENSITY \u003e SALINITY", "shape": "dot", "title": "EARTH SCIENCE \u003e OCEANS \u003e SALINITY/DENSITY \u003e SALINITY"}, {"id": 96, "label": "Ship of Opportunity Programme (SOOP)", "shape": "dot", "title": "Ship of Opportunity Programme (SOOP)"}, {"id": 97, "label": "DEPTH - OBSERVATION", "shape": "dot", "title": "DEPTH - OBSERVATION"}, {"id": 98, "label": "TRANSMISSIVITY", "shape": "dot", "title": "TRANSMISSIVITY"}, {"id": 99, "label": "gov.noaa.nodc:0208737", "shape": "dot", "title": "gov.noaa.nodc:0208737"}, {"id": 100, "label": "Gulf of Alaska", "shape": "dot", "title": "Gulf of Alaska"}, {"id": 101, "label": "EARTH SCIENCE \u003e OCEANS \u003e OCEAN CHEMISTRY \u003e SILICATE", "shape": "dot", "title": "EARTH SCIENCE \u003e OCEANS \u003e OCEAN CHEMISTRY \u003e SILICATE"}, {"id": 102, "label": "Global Temperature and Salinity Profile Programme (GTSPP)", "shape": "dot", "title": "Global Temperature and Salinity Profile Programme (GTSPP)"}, {"id": 103, "label": "OCEAN \u003e PACIFIC OCEAN \u003e NORTH PACIFIC OCEAN", "shape": "dot", "title": "OCEAN \u003e PACIFIC OCEAN \u003e NORTH PACIFIC OCEAN"}, {"id": 104, "label": "662", "shape": "dot", "title": "662"}, {"id": 105, "label": "FERREL (ICES code: 318L)", "shape": "dot", "title": "FERREL (ICES code: 318L)"}, {"id": 106, "label": "International Council for Exploration of the Sea", "shape": "dot", "title": "International Council for Exploration of the Sea"}, {"id": 107, "label": "EARTH SCIENCE \u003e OCEANS \u003e OCEAN TEMPERATURE \u003e WATER TEMPERATURE", "shape": "dot", "title": "EARTH SCIENCE \u003e OCEANS \u003e OCEAN TEMPERATURE \u003e WATER TEMPERATURE"}, {"id": 108, "label": "CA/DFO \u003e Fisheries and Oceans, Canada", "shape": "dot", "title": "CA/DFO \u003e Fisheries and Oceans, Canada"}, {"id": 109, "label": "EARTH SCIENCE \u003e OCEANS \u003e OCEAN CHEMISTRY \u003e NITRATE", "shape": "dot", "title": "EARTH SCIENCE \u003e OCEANS \u003e OCEAN CHEMISTRY \u003e NITRATE"}, {"id": 110, "label": "(NCEI Accession 7700121)", "shape": "dot", "title": "(NCEI Accession 7700121)"}, {"id": 111, "label": "SAFMARINE NOLIZWE", "shape": "dot", "title": "SAFMARINE NOLIZWE"}, {"id": 112, "label": "BEACH TAR - SEASHORE SURFACE", "shape": "dot", "title": "BEACH TAR - SEASHORE SURFACE"}, {"id": 113, "label": "Continent \u003e Asia \u003e Western Asia \u003e Armenia", "shape": "dot", "title": "Continent \u003e Asia \u003e Western Asia \u003e Armenia"}, {"id": 114, "label": "gov.noaa.nodc:0000052", "shape": "dot", "title": "gov.noaa.nodc:0000052"}, {"id": 115, "label": "LAND-MARGIN ECOSYSTEM RESEARCH (LMER)", "shape": "dot", "title": "LAND-MARGIN ECOSYSTEM RESEARCH (LMER)"}, {"id": 116, "label": "North Pacific Ocean", "shape": "dot", "title": "North Pacific Ocean"}, {"id": 117, "label": "US Navy; Naval Oceanographic Office", "shape": "dot", "title": "US Navy; Naval Oceanographic Office"}, {"id": 118, "label": "WATER TEMPERATURE", "shape": "dot", "title": "WATER TEMPERATURE"}, {"id": 119, "label": "208737", "shape": "dot", "title": "208737"}, {"id": 120, "label": "1990, 1991, 1992 and 1995 CRETM/LMER Zooplankton Data Sets (NCEI Accession 0000029)", "shape": "dot", "title": "1990, 1991, 1992 and 1995 CRETM/LMER Zooplankton Data Sets (NCEI Accession 0000029)"}, {"id": 121, "label": "CRUSADER", "shape": "dot", "title": "CRUSADER"}, {"id": 122, "label": "INFOTERRA \u003e Disasters \u003e Catastrophic phenomena \u003e Earthquakes", "shape": "dot", "title": "INFOTERRA \u003e Disasters \u003e Catastrophic phenomena \u003e Earthquakes"}, {"id": 123, "label": "29", "shape": "dot", "title": "29"}, {"id": 124, "label": "climatologyMeteorologyAtmosphere", "shape": "dot", "title": "climatologyMeteorologyAtmosphere"}, {"id": 125, "label": "silicate", "shape": "dot", "title": "silicate"}, {"id": 126, "label": "CARRYMAR (ICES code: SVCA)", "shape": "dot", "title": "CARRYMAR (ICES code: SVCA)"}, {"id": 127, "label": "EARTH SCIENCE \u003e OCEANS \u003e OCEAN OPTICS \u003e ATTENUATION/TRANSMISSION", "shape": "dot", "title": "EARTH SCIENCE \u003e OCEANS \u003e OCEAN OPTICS \u003e ATTENUATION/TRANSMISSION"}, {"id": 128, "label": "bathythermograph - XBT", "shape": "dot", "title": "bathythermograph - XBT"}, {"id": 129, "label": "OCEAN \u003e PACIFIC OCEAN \u003e NORTH PACIFIC OCEAN \u003e GULF OF ALASKA", "shape": "dot", "title": "OCEAN \u003e PACIFIC OCEAN \u003e NORTH PACIFIC OCEAN \u003e GULF OF ALASKA"}, {"id": 130, "label": "WECOMA (ICES code: 32WC)", "shape": "dot", "title": "WECOMA (ICES code: 32WC)"}, {"id": 131, "label": "Seismographs", "shape": "dot", "title": "Seismographs"}, {"id": 132, "label": "CURRENT DIRECTION", "shape": "dot", "title": "CURRENT DIRECTION"}, {"id": 133, "label": "ENCOUNTER BAY", "shape": "dot", "title": "ENCOUNTER BAY"}, {"id": 134, "label": "biota", "shape": "dot", "title": "biota"}, {"id": 135, "label": "NITRATE", "shape": "dot", "title": "NITRATE"}, {"id": 136, "label": "OCEAN \u003e ATLANTIC OCEAN \u003e SOUTH ATLANTIC OCEAN", "shape": "dot", "title": "OCEAN \u003e ATLANTIC OCEAN \u003e SOUTH ATLANTIC OCEAN"}, {"id": 137, "label": "(NCEI Accession 0000662)", "shape": "dot", "title": "(NCEI Accession 0000662)"}, {"id": 138, "label": "RV Alpha Helix", "shape": "dot", "title": "RV Alpha Helix"}, {"id": 139, "label": "11 Real-time XBT replacements assembled by Canada Department of Fisheries and Oceans (DFO) for the Global Temperature-Salinity Profile Program (GTSPP), dates ranging from 12/01/1998 to 12/04/1998 (NCEI Accession 0002166)", "shape": "dot", "title": "11 Real-time XBT replacements assembled by Canada Department of Fisheries and Oceans (DFO) for the Global Temperature-Salinity Profile Program (GTSPP), dates ranging from 12/01/1998 to 12/04/1998 (NCEI Accession 0002166)"}, {"id": 140, "label": "CURRENT SPEED", "shape": "dot", "title": "CURRENT SPEED"}, {"id": 141, "label": "OPTICAL BACKSCATTER", "shape": "dot", "title": "OPTICAL BACKSCATTER"}, {"id": 142, "label": "ZOOPLANKTON DENSITIES", "shape": "dot", "title": "ZOOPLANKTON DENSITIES"}, {"id": 143, "label": "1988 Resurrection Bay Zooplankton Data Set from 1988-03-01 to 1988-06-28 (NCEI Accession 0000052)", "shape": "dot", "title": "1988 Resurrection Bay Zooplankton Data Set from 1988-03-01 to 1988-06-28 (NCEI Accession 0000052)"}, {"id": 144, "label": "0215155", "shape": "dot", "title": "0215155"}, {"id": 145, "label": "(NCEI Accession 0208737)", "shape": "dot", "title": "(NCEI Accession 0208737)"}, {"id": 146, "label": "6900076", "shape": "dot", "title": "6900076"}, {"id": 147, "label": "pump casts", "shape": "dot", "title": "pump casts"}, {"id": 148, "label": "Fisheries and Oceans Canada; Marine Environmental Data Section", "shape": "dot", "title": "Fisheries and Oceans Canada; Marine Environmental Data Section"}, {"id": 149, "label": "DOC/NOAA/NOS \u003e National Ocean Service, NOAA, U.S. Department of Commerce", "shape": "dot", "title": "DOC/NOAA/NOS \u003e National Ocean Service, NOAA, U.S. Department of Commerce"}, {"id": 150, "label": "meteorological", "shape": "dot", "title": "meteorological"}, {"id": 151, "label": "Flores Sea", "shape": "dot", "title": "Flores Sea"}, {"id": 152, "label": "LMER \u003e Land Margin Ecosystem Research Project", "shape": "dot", "title": "LMER \u003e Land Margin Ecosystem Research Project"}, {"id": 153, "label": "optical", "shape": "dot", "title": "optical"}, {"id": 154, "label": "EARTH SCIENCE \u003e OCEANS \u003e OCEAN CIRCULATION \u003e OCEAN CURRENTS", "shape": "dot", "title": "EARTH SCIENCE \u003e OCEANS \u003e OCEAN CIRCULATION \u003e OCEAN CURRENTS"}, {"id": 155, "label": "gov.noaa.nodc:7300504", "shape": "dot", "title": "gov.noaa.nodc:7300504"}, {"id": 156, "label": "DOC/NOAA/NESDIS/NGDC \u003e National Geophysical Data Center, NESDIS, NOAA, U.S. Department of Commerce", "shape": "dot", "title": "DOC/NOAA/NESDIS/NGDC \u003e National Geophysical Data Center, NESDIS, NOAA, U.S. Department of Commerce"}, {"id": 157, "label": "0000662", "shape": "dot", "title": "0000662"}, {"id": 158, "label": "gov.noaa.nodc:0000029", "shape": "dot", "title": "gov.noaa.nodc:0000029"}, {"id": 159, "label": "ZOOPLANKTON SPECIES NUMBER PER SAMPLE", "shape": "dot", "title": "ZOOPLANKTON SPECIES NUMBER PER SAMPLE"}, {"id": 160, "label": "DOD/USNAVY/NAVOCEANO \u003e Naval Oceanographic Office, U.S. Navy, U.S. Department of Defense", "shape": "dot", "title": "DOD/USNAVY/NAVOCEANO \u003e Naval Oceanographic Office, U.S. Navy, U.S. Department of Defense"}, {"id": 161, "label": "Arafura Sea", "shape": "dot", "title": "Arafura Sea"}]);
+        edges = new vis.DataSet([{"from": 0, "label": "dc:subject", "to": 1}, {"from": 2, "label": "dc:subject", "to": 3}, {"from": 4, "label": "dc:subject", "to": 5}, {"from": 6, "label": "dc:subject", "to": 7}, {"from": 8, "label": "dc:title", "to": 9}, {"from": 2, "label": "dc:subject", "to": 10}, {"from": 11, "label": "dc:subject", "to": 12}, {"from": 0, "label": "dc:subject", "to": 13}, {"from": 0, "label": "dc:subject", "to": 14}, {"from": 2, "label": "dc:subject", "to": 15}, {"from": 11, "label": "dc:subject", "to": 16}, {"from": 11, "label": "dc:subject", "to": 17}, {"from": 18, "label": "dc:subject", "to": 19}, {"from": 4, "label": "dc:subject", "to": 20}, {"from": 21, "label": "dc:title", "to": 22}, {"from": 6, "label": "dc:subject", "to": 23}, {"from": 4, "label": "dc:subject", "to": 24}, {"from": 11, "label": "dc:subject", "to": 25}, {"from": 8, "label": "rdfs1:label", "to": 26}, {"from": 2, "label": "dc:subject", "to": 27}, {"from": 18, "label": "dc:subject", "to": 28}, {"from": 2, "label": "dc:subject", "to": 29}, {"from": 11, "label": "dc:subject", "to": 30}, {"from": 2, "label": "dc:subject", "to": 31}, {"from": 11, "label": "dc:subject", "to": 19}, {"from": 2, "label": "dc:subject", "to": 32}, {"from": 6, "label": "dc:title", "to": 33}, {"from": 4, "label": "rdfs1:label", "to": 34}, {"from": 4, "label": "dc:subject", "to": 25}, {"from": 4, "label": "dc:subject", "to": 19}, {"from": 0, "label": "dc:subject", "to": 7}, {"from": 11, "label": "rdfs1:label", "to": 35}, {"from": 18, "label": "rdfs1:label", "to": 36}, {"from": 6, "label": "dc:subject", "to": 37}, {"from": 8, "label": "dc:subject", "to": 38}, {"from": 11, "label": "dc:subject", "to": 39}, {"from": 21, "label": "rdfs1:label", "to": 40}, {"from": 8, "label": "dc:subject", "to": 41}, {"from": 2, "label": "dc:subject", "to": 42}, {"from": 43, "label": "dc:subject", "to": 44}, {"from": 18, "label": "dc:subject", "to": 25}, {"from": 11, "label": "dc:subject", "to": 45}, {"from": 0, "label": "dc:subject", "to": 46}, {"from": 2, "label": "dc:subject", "to": 47}, {"from": 11, "label": "dc:subject", "to": 44}, {"from": 21, "label": "dc:subject", "to": 19}, {"from": 43, "label": "dc:title", "to": 48}, {"from": 43, "label": "dc:subject", "to": 49}, {"from": 11, "label": "dc:subject", "to": 20}, {"from": 2, "label": "dc:subject", "to": 50}, {"from": 8, "label": "dc:subject", "to": 51}, {"from": 11, "label": "dc:subject", "to": 52}, {"from": 11, "label": "dc:subject", "to": 53}, {"from": 54, "label": "dc:subject", "to": 55}, {"from": 21, "label": "dc:subject", "to": 20}, {"from": 6, "label": "dc:subject", "to": 56}, {"from": 54, "label": "dc:subject", "to": 20}, {"from": 18, "label": "dc:subject", "to": 57}, {"from": 0, "label": "dc:subject", "to": 20}, {"from": 2, "label": "dc:subject", "to": 16}, {"from": 8, "label": "dc:subject", "to": 58}, {"from": 0, "label": "dc:subject", "to": 59}, {"from": 4, "label": "dc:subject", "to": 44}, {"from": 21, "label": "dc:subject", "to": 28}, {"from": 4, "label": "dc:subject", "to": 60}, {"from": 6, "label": "dc:subject", "to": 25}, {"from": 0, "label": "dc:subject", "to": 61}, {"from": 6, "label": "dc:subject", "to": 62}, {"from": 0, "label": "dc:subject", "to": 19}, {"from": 43, "label": "rdfs1:label", "to": 63}, {"from": 2, "label": "dc:subject", "to": 64}, {"from": 6, "label": "dc:subject", "to": 65}, {"from": 54, "label": "dc:subject", "to": 19}, {"from": 8, "label": "dc:subject", "to": 66}, {"from": 11, "label": "dc:subject", "to": 67}, {"from": 2, "label": "dc:subject", "to": 19}, {"from": 4, "label": "dc:subject", "to": 68}, {"from": 0, "label": "dc:subject", "to": 69}, {"from": 54, "label": "dc:subject", "to": 44}, {"from": 0, "label": "dc:subject", "to": 70}, {"from": 21, "label": "dc:subject", "to": 44}, {"from": 11, "label": "dc:subject", "to": 71}, {"from": 11, "label": "dc:subject", "to": 37}, {"from": 0, "label": "dc:subject", "to": 44}, {"from": 0, "label": "dc:subject", "to": 72}, {"from": 8, "label": "dc:subject", "to": 73}, {"from": 2, "label": "dc:subject", "to": 74}, {"from": 43, "label": "dc:subject", "to": 19}, {"from": 2, "label": "dc:subject", "to": 75}, {"from": 6, "label": "dc:subject", "to": 39}, {"from": 4, "label": "dc:subject", "to": 37}, {"from": 6, "label": "dc:subject", "to": 76}, {"from": 8, "label": "dc:subject", "to": 77}, {"from": 2, "label": "dc:subject", "to": 78}, {"from": 11, "label": "dc:subject", "to": 79}, {"from": 2, "label": "dc:subject", "to": 80}, {"from": 2, "label": "dc:subject", "to": 59}, {"from": 11, "label": "dc:subject", "to": 81}, {"from": 6, "label": "dc:subject", "to": 82}, {"from": 43, "label": "dc:subject", "to": 20}, {"from": 4, "label": "dc:subject", "to": 83}, {"from": 6, "label": "dc:subject", "to": 84}, {"from": 11, "label": "dc:subject", "to": 85}, {"from": 0, "label": "dc:subject", "to": 25}, {"from": 2, "label": "dc:subject", "to": 25}, {"from": 2, "label": "dc:subject", "to": 86}, {"from": 54, "label": "dc:subject", "to": 25}, {"from": 8, "label": "dc:subject", "to": 87}, {"from": 4, "label": "dc:subject", "to": 88}, {"from": 8, "label": "dc:subject", "to": 89}, {"from": 11, "label": "dc:subject", "to": 90}, {"from": 43, "label": "dc:subject", "to": 91}, {"from": 0, "label": "dc:subject", "to": 39}, {"from": 0, "label": "dc:subject", "to": 92}, {"from": 11, "label": "dc:subject", "to": 93}, {"from": 0, "label": "dc:subject", "to": 49}, {"from": 21, "label": "dc:subject", "to": 49}, {"from": 8, "label": "dc:subject", "to": 94}, {"from": 2, "label": "dc:subject", "to": 95}, {"from": 54, "label": "dc:subject", "to": 49}, {"from": 11, "label": "dc:subject", "to": 96}, {"from": 18, "label": "dc:subject", "to": 44}, {"from": 11, "label": "dc:subject", "to": 83}, {"from": 6, "label": "dc:subject", "to": 16}, {"from": 4, "label": "dc:subject", "to": 97}, {"from": 2, "label": "dc:subject", "to": 98}, {"from": 54, "label": "rdfs1:label", "to": 99}, {"from": 0, "label": "dc:subject", "to": 100}, {"from": 21, "label": "dc:subject", "to": 25}, {"from": 4, "label": "dc:subject", "to": 101}, {"from": 2, "label": "dc:subject", "to": 37}, {"from": 11, "label": "dc:subject", "to": 102}, {"from": 2, "label": "dc:subject", "to": 103}, {"from": 4, "label": "dc:subject", "to": 104}, {"from": 6, "label": "dc:subject", "to": 105}, {"from": 43, "label": "dc:subject", "to": 106}, {"from": 18, "label": "dc:subject", "to": 20}, {"from": 2, "label": "dc:subject", "to": 107}, {"from": 11, "label": "dc:subject", "to": 108}, {"from": 2, "label": "dc:subject", "to": 49}, {"from": 4, "label": "dc:subject", "to": 109}, {"from": 18, "label": "dc:title", "to": 110}, {"from": 11, "label": "dc:subject", "to": 111}, {"from": 6, "label": "dc:subject", "to": 49}, {"from": 0, "label": "dc:subject", "to": 112}, {"from": 8, "label": "dc:subject", "to": 113}, {"from": 0, "label": "rdfs1:label", "to": 114}, {"from": 2, "label": "dc:subject", "to": 115}, {"from": 2, "label": "dc:subject", "to": 116}, {"from": 4, "label": "dc:subject", "to": 117}, {"from": 8, "label": "dc:subject", "to": 44}, {"from": 2, "label": "dc:subject", "to": 118}, {"from": 54, "label": "dc:subject", "to": 119}, {"from": 2, "label": "dc:title", "to": 120}, {"from": 11, "label": "dc:subject", "to": 121}, {"from": 8, "label": "dc:subject", "to": 122}, {"from": 2, "label": "dc:subject", "to": 123}, {"from": 11, "label": "dc:subject", "to": 124}, {"from": 4, "label": "dc:subject", "to": 125}, {"from": 11, "label": "dc:subject", "to": 126}, {"from": 2, "label": "dc:subject", "to": 127}, {"from": 11, "label": "dc:subject", "to": 128}, {"from": 6, "label": "dc:subject", "to": 44}, {"from": 0, "label": "dc:subject", "to": 129}, {"from": 4, "label": "dc:subject", "to": 62}, {"from": 2, "label": "dc:subject", "to": 130}, {"from": 8, "label": "dc:subject", "to": 131}, {"from": 6, "label": "dc:subject", "to": 132}, {"from": 11, "label": "dc:subject", "to": 133}, {"from": 0, "label": "dc:subject", "to": 134}, {"from": 4, "label": "dc:subject", "to": 135}, {"from": 11, "label": "dc:subject", "to": 136}, {"from": 4, "label": "dc:title", "to": 137}, {"from": 0, "label": "dc:subject", "to": 138}, {"from": 4, "label": "dc:subject", "to": 49}, {"from": 11, "label": "dc:title", "to": 139}, {"from": 6, "label": "dc:subject", "to": 140}, {"from": 2, "label": "dc:subject", "to": 141}, {"from": 2, "label": "dc:subject", "to": 20}, {"from": 2, "label": "dc:subject", "to": 142}, {"from": 0, "label": "dc:title", "to": 143}, {"from": 43, "label": "dc:subject", "to": 25}, {"from": 43, "label": "dc:subject", "to": 144}, {"from": 54, "label": "dc:title", "to": 145}, {"from": 6, "label": "dc:subject", "to": 20}, {"from": 21, "label": "dc:subject", "to": 146}, {"from": 18, "label": "dc:subject", "to": 49}, {"from": 2, "label": "dc:subject", "to": 147}, {"from": 6, "label": "dc:subject", "to": 19}, {"from": 11, "label": "dc:subject", "to": 148}, {"from": 6, "label": "dc:subject", "to": 149}, {"from": 11, "label": "dc:subject", "to": 118}, {"from": 11, "label": "dc:subject", "to": 150}, {"from": 11, "label": "dc:subject", "to": 151}, {"from": 2, "label": "dc:subject", "to": 152}, {"from": 11, "label": "dc:subject", "to": 107}, {"from": 11, "label": "dc:subject", "to": 49}, {"from": 2, "label": "dc:subject", "to": 153}, {"from": 6, "label": "dc:subject", "to": 154}, {"from": 6, "label": "rdfs1:label", "to": 155}, {"from": 8, "label": "dc:subject", "to": 156}, {"from": 6, "label": "dc:subject", "to": 83}, {"from": 4, "label": "dc:subject", "to": 157}, {"from": 2, "label": "rdfs1:label", "to": 158}, {"from": 2, "label": "dc:subject", "to": 44}, {"from": 0, "label": "dc:subject", "to": 159}, {"from": 4, "label": "dc:subject", "to": 160}, {"from": 11, "label": "dc:subject", "to": 161}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "forceAtlas2Based": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.01,
+            "damping": 0.4,
+            "gravitationalConstant": -50,
+            "springConstant": 0.08,
+            "springLength": 100
+        },
+        "solver": "forceAtlas2Based",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+        network.on("stabilizationProgress", function(params) {
+      		document.getElementById('loadingBar').removeAttribute("style");
+	        var maxWidth = 496;
+	        var minWidth = 20;
+	        var widthFactor = params.iterations/params.total;
+	        var width = Math.max(minWidth,maxWidth * widthFactor);
+
+	        document.getElementById('bar').style.width = width + 'px';
+	        document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+	    });
+	    network.once("stabilizationIterationsDone", function() {
+	        document.getElementById('text').innerHTML = '100%';
+	        document.getElementById('bar').style.width = '496px';
+	        document.getElementById('loadingBar').style.opacity = 0;
+	        // really clean the dom element
+	        setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+	    });
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
