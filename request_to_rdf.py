@@ -97,7 +97,7 @@ def main():
         for col in metadata_df.columns:
             if col !='identifier':
                 for attr in metadata_df[col][row]:
-                    col_string = "<" + col + ">" + str(attr) + "</" + col + ">"
+                    col_string = "<" + col + ">" + str(attr).replace('&', '&amp;') + "</" + col + ">"
                     fo.write(col_string)
 
         fo.write("</rdf:Description> \n")
