@@ -15,14 +15,14 @@ def get_attr(soup, attr_name):
     return attr_list
 
 def main():
-    num_results = 10
+    num_results = 1000
     URL = "https://www.ncei.noaa.gov/metadata/geoportal/opensearch?f=csw&from=0&size=" + str(num_results)
     filename = "data/parsed_metadata.xml"
 
     page = requests.get(URL)
     soup = BeautifulSoup(page.text, "lxml")
 
-    schemas = ['dc:subject', 'dc:title']
+    schemas = ['dc:subject', 'dc:title', 'ows:BoundingBox']
     record_name = 'csw:record'
     identifier = 'dc:identifier'    
     
@@ -75,6 +75,7 @@ def main():
     xml_schema_terms['dc'] = "xmlns:dc='http://purl.org/dc/elements/1.1/' "
     xml_schema_terms['dct'] = "xmlns:dct='http://purl.org/dc/terms/' "
     xml_schema_terms['rdfs'] = "xmlns:rdfs='http://www.w3.org/TR/2014/REC-rdf-schema-20140225/'"
+    xml_schema_terms['ows'] = "xmlns:ows='http://www.opengis.net/ows/2.0'"
 
     schemas_to_include = [xml_schema_terms['rdf'], xml_schema_terms['rdfs']]
 
@@ -98,7 +99,7 @@ def main():
         for col in metadata_df.columns:
             if col !='identifier':
                 for attr in metadata_df[col][row]:
-                    col_string = "<" + col + ">" + str(attr).replace('&', '&amp;') + "</" + col + ">"
+                    col_string = "<" + col + ">" + str(attr).replace('&', '&amp;').strip('\\n').strip('\\t').replace('<', '&lt;').replace('>','&gt;') + "</" + col + ">"
                     fo.write(col_string)
 
         fo.write("</rdf:Description> \n")
