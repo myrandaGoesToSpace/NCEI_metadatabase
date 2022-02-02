@@ -22,7 +22,7 @@ def main():
     page = requests.get(URL)
     soup = BeautifulSoup(page.text, "lxml")
 
-    schemas = ['dc:subject']
+    schemas = ['dc:subject', 'dc:title']
     record_name = 'csw:record'
     identifier = 'dc:identifier'    
     
@@ -64,7 +64,8 @@ def main():
 
     # Necessary variables
     PATH = filename
-    PATH = PATH.replace('.xml','_rdf.xml')
+    #PATH = PATH.replace('.xml','_rdf.xml')
+    PATH = PATH.replace('.xml','.rdf')
 
     # Dictionary to hold xml schemas
     xml_schema_terms = {}
