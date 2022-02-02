@@ -23,5 +23,9 @@ The scripts in this repo use Python 3.7 and a combination of packages listed bel
 ### Visualization 
 The graph visualization is demonstrated in `visualization_example.ipynb`. Run this notebook in Jupyter Notebook to visualize a portion of the NCEI metadata graph.
 
+### Scripts 
+The script `request_to_rdf.py` converts a CSW request to an RDF file which can then be used in a graph database. To run this script, open the file, edit the URL and desired number of results accordingly (default is to search for first 10 items on https://www.ncei.noaa.gov/metadata/geoportal/), and run the script with the command `python request_to_rdf.py`.
+
 ## Planned Updates
 - Environment package
+- Expanded options of vocabularies for metadata
