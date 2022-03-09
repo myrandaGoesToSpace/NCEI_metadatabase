@@ -15,14 +15,14 @@ def get_attr(soup, attr_name):
     return attr_list
 
 def main():
-    num_results = 1000
+    num_results = 10
     URL = "https://www.ncei.noaa.gov/metadata/geoportal/opensearch?f=csw&from=0&size=" + str(num_results)
     filename = "data/parsed_metadata.xml"
 
     page = requests.get(URL)
     soup = BeautifulSoup(page.text, "lxml")
 
-    schemas = ['dc:subject', 'dc:title', 'ows:BoundingBox']
+    schemas = ['dc:subject', 'dc:title', 'dct:abstract', 'ows:BoundingBox']
     record_name = 'csw:record'
     identifier = 'dc:identifier'    
     
@@ -74,6 +74,7 @@ def main():
     xml_schema_terms['rdf'] = "xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' "
     xml_schema_terms['dc'] = "xmlns:dc='http://purl.org/dc/elements/1.1/' "
     xml_schema_terms['dct'] = "xmlns:dct='http://purl.org/dc/terms/' "
+    xml_schema_terms['dctype'] = "xmlns:dctype='http://purl.org/dc/terms/DCMIType' "
     xml_schema_terms['rdfs'] = "xmlns:rdfs='http://www.w3.org/TR/2014/REC-rdf-schema-20140225/'"
     xml_schema_terms['ows'] = "xmlns:ows='http://www.opengis.net/ows/2.0'"
 
@@ -95,6 +96,7 @@ def main():
         id_string = ''.join(metadata_df['identifier'][row])
         label_string = id_string
         fo.write("<rdf:Description rdf:about='" + id_string + "' rdfs:label='" + label_string + "' >")
+        fo.write("<rdf:type rdf:resource='http://purl.org/dc/terms/DCMIType/Dataset' />")
 
         for col in metadata_df.columns:
             if col !='identifier':
