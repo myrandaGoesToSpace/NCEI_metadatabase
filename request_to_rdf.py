@@ -15,9 +15,11 @@ def get_attr(soup, attr_name):
     return attr_list
 
 def main():
-    num_results = 10
-    URL = "https://www.ncei.noaa.gov/metadata/geoportal/opensearch?f=csw&from=0&size=" + str(num_results)
-    filename = "data/parsed_metadata.xml"
+    gcmd = pd.read_csv("./data/gcmd_science_keywords.csv", index_col=0)
+
+    num_results = 50
+    URL = "https://www.ncei.noaa.gov/metadata/geoportal/opensearch?f=csw&start=1000&size=" + str(num_results)
+    filename = "data/test_parsed_metadata.xml"
 
     page = requests.get(URL)
     soup = BeautifulSoup(page.text, "lxml")
@@ -51,6 +53,27 @@ def main():
     print('df:')
     print(metadata_df)
 
+    # Add GCMD Keywords if applicable
+    gcmd_col = []
+    for row in metadata_df.index:
+        gcmd_row = []
+        for s in metadata_df["dc:subject"][row]:
+            if s in list(gcmd["label"]):
+                gcmd_row.append(str(gcmd[gcmd["label"]==s]["uuid"]).split()[1].strip())
+                print("Found keyword: %s" %s)
+            else:
+                gcmd_row.append("NA")
+                print(s)
+        gcmd_col.append(gcmd_row)
+
+    metadata_df["gcmd"] = gcmd_col
+    print(type(metadata_df["gcmd"][0]))
+    print(metadata_df["gcmd"][3])
+    print(metadata_df)
+
+    #print(metadata_df[metadata_df["gcmd"]]
+    #raise SystemExit(0)
+
     PATH = filename
     PATH = PATH.replace('xml','csv')
 
@@ -77,8 +100,9 @@ def main():
     xml_schema_terms['dctype'] = "xmlns:dctype='http://purl.org/dc/terms/DCMIType' "
     xml_schema_terms['rdfs'] = "xmlns:rdfs='http://www.w3.org/TR/2014/REC-rdf-schema-20140225/'"
     xml_schema_terms['ows'] = "xmlns:ows='http://www.opengis.net/ows/2.0'"
+    xml_schema_terms['gcmd'] = "xmlns:gcmd='https://gcmd.earthdata.nasa.gov/kms/concept/'"
 
-    schemas_to_include = [xml_schema_terms['rdf'], xml_schema_terms['rdfs']]
+    schemas_to_include = [xml_schema_terms['rdf'], xml_schema_terms['rdfs'], xml_schema_terms['gcmd']]
 
     for schema in schemas:
         for key in xml_schema_terms.keys():
@@ -99,10 +123,19 @@ def main():
         fo.write("<rdf:type rdf:resource='http://purl.org/dc/terms/DCMIType/Dataset' />")
 
         for col in metadata_df.columns:
-            if col !='identifier':
+            if col !='identifier' and col != "gcmd":
                 for attr in metadata_df[col][row]:
                     col_string = "<" + col + ">" + str(attr).replace('&', '&amp;').strip('\\n').strip('\\t').replace('<', '&lt;').replace('>','&gt;') + "</" + col + ">"
                     fo.write(col_string)
+            elif col == "gcmd":
+                # add gcmd properties to graph
+                # TODO: this currently returns g, c, m, d as keywords - investigate
+                gcmd_list = [keyword for keyword in metadata_df[col][row] if keyword != 'NA']
+                for g in gcmd_list:
+                    gcmd_string = "<dc:subject rdf:resource='https://gcmd.earthdata.nasa.gov/kms/concept/" + str(g) + "' />"
+                    fo.write(gcmd_string)
+
+
 
         fo.write("</rdf:Description> \n")
 
